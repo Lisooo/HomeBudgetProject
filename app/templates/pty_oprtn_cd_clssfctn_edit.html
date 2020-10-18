@@ -1,0 +1,64 @@
+{% extends "index.html" %}
+{% block content %}
+    <div>
+        <h1>{{ title }}</h1>
+    </div>
+    <div>
+    <p>PTY_NM: {{ v_data['pty_nm'] }}</p>
+    <p>PTY_ADDRESS: {{ v_data['pty_address']}}</p>
+    <p>PTY_CITY: {{ v_data['pty_city']}}</p>
+    <p>PTY_CTRY: {{ v_data['pty_ctry']}}</p>
+    <p>ACN: {{ v_data['pty_acn']}}</p>
+    <p id="oprtn_ctg">{{ v_data['oprtn_ctg'] }}</p>
+
+    <div class="form">
+
+        <form method = 'POST' action = "">
+                {{ form.hidden_tag() }}
+        <fieldset class = 'form-group'>
+            <div class="row">
+                <div class='col-25'>
+                {{ form.trnsct_ctg.label(class="form-control-label") }}
+            </div>
+            <div class="col-75">
+                {{ form.trnsct_ctg }}
+            </div>
+            </div>
+
+            <div class="row">
+                <div class='col-25'>
+                {{ form.trnsct_sctg.label(class="form-control-label") }}
+            </div>
+            <div class="col-75">
+                {{ form.trnsct_sctg }}
+            </div>
+            </div>
+        </fieldset>
+
+    <div class="row">
+        {{ form.submit(id="myBtn") }}
+    </div>
+</form>
+</div>
+    </div>
+    <script>
+        trnsct_ctg_select = document.getElementById('trnsct_ctg');
+        trnsct_sctg_values = document.getElementById('trnsct_sctg');
+        oprtn_ctg_value = document.getElementById('oprtn_ctg').innerText;
+
+        trnsct_ctg_select.onchange = function(){
+            trnsct_ctg_id = trnsct_ctg_select.value;
+            fetch('get_trnsctn_sctg_list/' + trnsct_ctg_id + '_' + oprtn_ctg_value).then(function(response){
+                response.json().then(function(data) {
+                optionHTML = '';
+                for (dict_values of data.dict_values) {
+                        optionHTML += '<option value="' + dict_values.dict_val_id +'">' + dict_values.dict_val_val + '</option>'
+                    }
+
+                    trnsct_sctg_values.innerHTML = optionHTML;
+            });
+
+        });
+    }
+    </script>
+    {% endblock content %}

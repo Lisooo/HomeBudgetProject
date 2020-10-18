@@ -1,0 +1,94 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="bg2">
+    <a href ="{{ url_for('balances.monthly_dtl_bal') }}">
+    {% if monthly_bal['diff_bal'] > 0 %}
+    <h2>{{ monthly_bal['diff_bal'] }} <span>zł</span></h2>
+    {% else %}
+    <h2>{{ monthly_bal['diff_bal'] }} <span>zł</span></h2>
+    {% endif %}
+      <p>DOCHÓD W MIESIĄCU: {{ monthly_bal['month'] }}</p>
+    </a>
+      </div>
+
+  <div class="bg2">
+    <a href ="#">
+        <h2>{{ v_loaded_operation_dt }}</h2>
+      <p> Ostatni zaczytany dzień </p>
+    </a>
+  </div>
+
+  <div class="bg1">
+     <a href ="{{ url_for('dicts.dict_list') }}">
+      <h2><i class="fas fa-list-ul"></i></h2>
+      <p>Słowniki</p>
+    </a>
+  </div>
+
+  <div class="bg2">
+    <a href ="{{ url_for('pocc.pty_oprtn_cd_clssfctn') }}">
+      <h2><i class="fas fa-list-ul"></i></h2>
+      <p>Kategoryzacja transakcji</p>
+    </a>
+  </div>
+
+  <div class="bg2">
+    <a class="yellow" href ="#">
+        <h2><i class="fas fa-users"></i></h2>
+      <p>Users</p>
+    </a>
+  </div>
+
+  <div class="bg1">
+    <a href ="{{ url_for('balances.yearly_dtl_bal') }}">
+        {% if yearly_bal['diff_bal'] > 0 %}
+    <h2>{{ yearly_bal['diff_bal'] }} <span>zł</span></h2>
+    {% else %}
+    <h2>{{ yearly_bal['diff_bal'] }} <span>zł</span></h2>
+    {% endif %}
+      <p>DOCHÓD W ROKU: {{ yearly_bal['year'] }}</p>
+    </a>
+  </div>
+
+  <div class="bg2">
+    <a href ="/">
+        <h2><i class="fas fa-home"></i></h2>
+      <p>Home</p>
+    </a>
+  </div>
+
+  <div class="bg2">
+    <a href ="#">
+        <h2><i class="fas fa-balance-scale-left"></i></h2>
+      <p>Balances</p>
+    </a>
+  </div>
+
+  <div class="bg1">
+    <a href ="#">
+      <h2><i class="fas fa-chart-line"></i></h2>
+      <p>Charts</p>
+    </a>
+  </div>
+
+  <div class="bg1">
+    <a href ="#">
+      <h2><i class="fas fa-chart-pie"></i></h2>
+      <p>Chart Pie</p>
+    </a>
+  </div>
+
+  <div class="bg1">
+    <a class="yellow" href ="#">
+        <h2><i class="fas fa-users"></i></h2>
+      <p>Users</p>
+    </a>
+  </div>
+
+  <div class="bg1">
+    <a href ="#" >
+      <h2><i class="fas fa-list-ul"></i></h2>
+      <p>List</p>
+    </a>
+  </div>
+  {% endblock content %}

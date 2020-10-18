@@ -1,2 +1,5 @@
 venv/
 .idea/
+
+logs/*
+_1_downloader/browser_drivers/*

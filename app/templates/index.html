@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% if 'home' in request.endpoint %}
+  <link rel="stylesheet" href="/static/styles.css">
+  {% elif 'pty_oprtn_cd_clssfctn' or 'mnthly_dtl_bal' in request.endpoint %}
+  <link rel="stylesheet" href="/static/tst.css">
+  <link rel="stylesheet" href="/static/tables.css">
+  <link rel="stylesheet" href="/static/forms.css">
+  {% else %}
+  <link rel="stylesheet" href="/static/subpages.css">
+  <link rel="stylesheet" href="/static/tables.css">
+  <link rel="stylesheet" href="/static/forms.css">
+  {% endif %}
+
+  <script src="https://kit.fontawesome.com/e593401b71.js" crossorigin="anonymous"></script>
+  <script src='/static/Chart.min.js'></script>
+
+  <title>HomeBudget Project</title>
+
+</head>
+
+<body>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+
+</body>
+
+</html>
