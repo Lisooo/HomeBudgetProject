@@ -22,5 +22,6 @@ class DateParams(object):
 
 class FileParams(object):
     files_dir = f"{basedir}/csv_files/"
-    logs_dir = f"{basedir}/logs/"
+    logs_dir = f"{basedir}/_log_files/"
+    drivers_dir = f"{basedir}/_browser_drivers/"
     file_format = "'CSV'"

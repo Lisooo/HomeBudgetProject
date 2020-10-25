@@ -1,0 +1,49 @@
+{% extends "index.html" %}
+{% block content %}
+    <div>
+        <h1>{{ title }}</h1>
+    </div>
+    <div>
+    <table>
+        <thead>
+        <th>DICT_VAL_CRT_DT</th>
+        <th>DICT_VAL_ID</th>
+        <th>DICT_VAL_VAL</th>
+        {% if v_dict_tp == '2' %}
+            <th>RLTD_DICT_NM_1</th>
+            <th>RLTD_DICT_VAL_1</th>
+            <th>RLTD_DICT_NM_2</th>
+            <th>RLTD_DICT_VAL_2</th>
+            <th>RLTD_DICT_NM_3</th>
+            <th>RLTD_DICT_VAL_3</th>
+        {% else %}
+        {% endif %}
+        <th class='option'>EDYTUJ</th>
+        <th class='option'>USUN</th>
+    </thead>
+    <tbody>
+    {% for item in v_val_list %}
+    <tr>
+        <td>{{ item.dict_val_crt_dt }}</td>
+        <td>{{ item.dict_val_id }}</td>
+        <td>{{ item.dict_val_val }}</td>
+        {% if v_dict_tp == '2' %}
+        <td>{{ item.rltd_dict_nm_1 }}</td>
+        <td>{{ item.rltd_dict_val_1 }}</td>
+        <td>{{ item.rltd_dict_nm_2 }}</td>
+        <td>{{ item.rltd_dict_val_2 }}</td>
+        <td>{{ item.rltd_dict_nm_3 }}</td>
+        <td>{{ item.rltd_dict_val_3 }}</td>
+        {% else %}
+        {% endif %}
+        <td class='option'>X</td>
+        <td class='option'><a href="{{ url_for('dicts.remove_dict_value', p_dict_id=v_dict_id, p_dict_val_id=item.dict_val_id) }}"><i class="fas fa-trash"></i></a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    <div>
+        <a href="{{ url_for('dicts.add_dict_value', p_dict_id=v_dict_id) }}">Dodaj wpis</a>
+    </div>
+    {% endblock content %}

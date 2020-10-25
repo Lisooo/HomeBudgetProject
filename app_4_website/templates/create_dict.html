@@ -1,0 +1,65 @@
+{% extends "index.html" %}
+{% block content %}
+    <div>
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="form">
+
+ <form method = 'POST' action = "">
+            {{ form.hidden_tag() }}
+            <fieldset class = 'form-group'>
+                    <div class="row">
+                        <div class='col-25'>
+                            {{ form.dict_tp.label(class="form-control-label") }}
+                    </div>
+                    <div class="col-75">
+                      <select name="dict_tp">
+                        <option value="1">Prosty</option>
+                        <option value="2">Konwersji</option>
+                        </select>
+                        </div>
+                    </div>
+
+                <div class="row">
+                    <div class='col-25'>
+                        {{ form.dict_id.label(class="form-control-label") }}
+                    </div>
+                    <div class='col-75'>
+                        <input class="form-control" id="disabledInput1" type="text" placeholder=" {{ dict_id }}" disabled>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class='col-25'>
+                    {{ form.dict_nm.label(class="form-control-label") }}
+                </div>
+                <div class='col-75'>
+                    {{ form.dict_nm() }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class='col-25'>
+                    {{ form.dict_desc.label(class="form-control-label") }}
+                </div>
+                <div class='col-75'>
+                    {{ form.dict_desc }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class='col-25'>
+                    {{ form.dict_crt_dt.label(class="form-control-label") }}
+                </div>
+                <div class='col-75'>
+                        <input class="form-control" id="disabledInput2" type="text" placeholder=" {{ dict_crt_dt }}" disabled>
+                    </div>
+                </div>
+
+            </fieldset>
+            <div class="row">
+                {{ form.submit(id="myBtn") }}
+            </div>
+        </form>
+        </div>
+        {% endblock content %}
